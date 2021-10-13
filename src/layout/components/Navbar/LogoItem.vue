@@ -3,55 +3,46 @@
 
     <div class="header-top-logo">
       <div><img :src="logoUrl"></div>
-      <div style="font-size:20px;color:#f3f3f3;margin-left:20px">云谱世家</div>
+      <div style="font-size:20px;color:#f3f3f3;margin-left:20px"></div>
     </div>
-
-    <!-- <div class="header-logo">
-      <img :src="logoUrl">
-      <span><logo></logo></span>
-    </div>
-
-    <div class="header-title">
-      <span>{{ title }}</span>
-    </div> -->
 
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 export default {
-  name: "NavbarLogo",
+  name: 'NavbarLogo',
   data() {
     return {
-      title: "",
-    };
+      title: ''
+    }
   },
   computed: {
     logoUrl() {
-      return process.env.VUE_APP_COMMON_STATIC + "/logo.png";
+      return process.env.VUE_APP_COMMON_STATIC + '/logo.png'
     },
-    ...mapGetters(["avatar"]),
+    ...mapGetters(['avatar'])
   },
   watch: {
     $route() {
-      this.getMenuTitle();
-    },
+      this.getMenuTitle()
+    }
   },
   created() {
-    this.getMenuTitle();
+    this.getMenuTitle()
   },
   methods: {
     getMenuTitle() {
       // only show routes with meta.title
       const matched = this.$route.matched.filter(
         (item) => item.meta && item.meta.title
-      );
-      const first = matched[0];
-      this.title = first && first.meta ? first.meta.title : "";
-    },
-  },
-};
+      )
+      const first = matched[0]
+      this.title = first && first.meta ? first.meta.title : ''
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
