@@ -174,6 +174,18 @@ export const asyncRoutes = [
     ]
   },
 
+  {
+    path: '/batchAdd',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'BatchAdd',
+        component: () => import('@/views/question-manage/BatchAdd.vue'),
+        meta: { title: '批量新增', icon: 'form' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
